@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ikut Jastip Yanoshi</title>
-    <!-- Memuat Tailwind CSS untuk styling responsif -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Memuat font Montserrat dari Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
@@ -15,38 +13,97 @@
         body {
             font-family: 'Montserrat', sans-serif;
         }
-        /* Menambahkan gradasi latar belakang */
+
+        /* Menambahkan gradasi latar belakang yang dianimasikan */
         .gradient-bg {
-            background-image: linear-gradient(to bottom, #076eb3, #0d3b5a);
+            background: linear-gradient(-45deg, #076eb3, #0d3b5a, #022a4d, #0d3b5a);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+
+        /* Keyframes untuk animasi gradasi latar belakang */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Keyframes untuk animasi elemen masuk (Fade In & Slide Down) */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Keyframes untuk animasi elemen masuk (Fade In & Slide Up) */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Menerapkan animasi pada elemen yang diinginkan */
+        .animate-fadeInDown {
+            animation: fadeInDown 0.8s ease-out forwards;
+        }
+
+        .animate-fadeInUp {
+            opacity: 0; /* Mulai dengan transparan sebelum animasi */
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        /* Animasi denyut halus untuk tombol */
+        .animated-button {
+            animation: pulse 2.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);
+            }
+            50% {
+                transform: scale(1.02);
+                box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.4), 0 0 0 10px rgba(255, 255, 255, 0);
+            }
         }
     </style>
 </head>
-<body class="gradient-bg min-h-screen flex items-center justify-center p-4">
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4 overflow-hidden">
 
-    <!-- Kontainer Utama -->
     <div class="w-full max-w-sm mx-auto text-center text-white">
 
-        <!-- Judul Halaman -->
-        <h1 class="text-3xl font-bold mb-8">
+        <h1 class="text-3xl font-bold mb-10 animate-fadeInDown">
             Mau ikut Jastip yang mana?<br>Pilih dan klik tombol<br>di bawah ini ya!
         </h1>
 
-        <!-- Grup Tombol Utama -->
-        <div class="flex flex-col space-y-4 mb-8">
-            <!-- Tombol 1: Ganti '#' dengan URL yang Anda inginkan -->
-            <a href="https://yanoshijapan.github.io/jastipindojepang/" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+        <div class="flex flex-col space-y-5 mb-10">
+            <a href="https://yanoshijapan.github.io/jastipindojepang/" 
+               class="bg-blue-500 text-white font-bold py-4 px-6 rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl hover:bg-blue-600 animated-button animate-fadeInUp"
+               style="animation-delay: 0.2s;">
                 Ikut Jastip dari Indo ke Jepang
             </a>
-            <!-- Tombol 2: Ganti '#' dengan URL yang Anda inginkan -->
-            <a href="https://yanoshijapan.github.io/jastipjepangindo/" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+            <a href="https://yanoshijapan.github.io/jastipjepangindo/" 
+               class="bg-blue-500 text-white font-bold py-4 px-6 rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl hover:bg-blue-600 animated-button animate-fadeInUp"
+               style="animation-delay: 0.4s;">
                 Ikut Jastip dari Jepang ke Indo
             </a>
         </div>
 
-        <!-- Tombol Spreadsheet -->
         <div>
-            <!-- Tombol 3: Ganti '#' dengan URL spreadsheet Anda -->
-            <a href="https://jastipyanoshi.netlify.app" class="bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105 inline-block">
+            <a href="https://jastipyanoshi.netlify.app" 
+               class="bg-green-500 text-white font-bold py-4 px-6 rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl hover:bg-green-600 inline-block animate-fadeInUp"
+               style="animation-delay: 0.6s;">
                 Kembali ke Web Page
             </a>
         </div>
