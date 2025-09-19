@@ -69,10 +69,12 @@
         @keyframes pulse {
             0%, 100% {
                 transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1);
             }
             50% {
-                transform: scale(1.05);
+                /* Skala diperbesar dari 1.02 menjadi 1.05 */
+                transform: scale(1.05); 
+                /* Bayangan diperluas untuk efek cahaya yang lebih jelas */
                 box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 0 0 15px rgba(255, 255, 255, 0.3);
             }
         }
